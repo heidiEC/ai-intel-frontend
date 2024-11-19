@@ -6,7 +6,7 @@ function ArticleFeed() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('https://ai-intel-backend.onrender.com/api/articles')
+    fetch('https://ai-intel-backend-dpvm.onrender.com/api/articles')
       .then(response => {
         if (!response.ok) throw new Error('Failed to fetch articles');
         return response.json();

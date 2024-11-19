@@ -6,12 +6,17 @@ function SlackFeed() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('https://ai-intel-backend.onrender.com/api/slack')
+    const API_URL = process.env.NODE_ENV === 'development' 
+      ? 'http://localhost:3001' 
+      : 'https://ai-intel-backend-dpvm.onrender.com';
+
+    fetch(`${API_URL}/api/slack`)
       .then(response => {
         if (!response.ok) throw new Error('Failed to fetch Slack messages');
         return response.json();
       })
       .then(data => {
+        console.log('Slack data:', data);  // Debug log
         setMessages(data);
         setLoading(false);
       })
@@ -29,14 +34,9 @@ function SlackFeed() {
     <div className="articles-grid">
       {messages.map((message, index) => (
         <article key={index} className="article-card">
-          <p className="slack-message">{message.text}</p>
-          <div className="analysis">
-            <h3>AI Summary</h3>
-            <p>{message.analysis.summary}</p>
-          </div>
+          <p>{message.text}</p>
           <div className="meta">
             <span>{new Date(message.timestamp).toLocaleDateString()}</span>
-            <span>Slack</span>
           </div>
           <a href={message.link} target="_blank" rel="noopener noreferrer">
             View in Slack →
