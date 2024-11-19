@@ -1,23 +1,33 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import ArticleFeed from './components/ArticleFeed';
+import SlackFeed from './components/SlackFeed';
 import './App.css';
 
 function App() {
+  const [activeTab, setActiveTab] = useState('articles');
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>AI Intel</h1>
+        <div className="feed-toggle">
+          <button 
+            className={activeTab === 'articles' ? 'active' : ''}
+            onClick={() => setActiveTab('articles')}
+          >
+            AI Intel Feed
+          </button>
+          <button 
+            className={activeTab === 'slack' ? 'active' : ''}
+            onClick={() => setActiveTab('slack')}
+          >
+            Slack Feed
+          </button>
+        </div>
       </header>
+      <main>
+        {activeTab === 'articles' ? <ArticleFeed /> : <SlackFeed />}
+      </main>
     </div>
   );
 }
