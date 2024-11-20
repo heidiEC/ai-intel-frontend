@@ -1,0 +1,26 @@
+.articles-grid {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.article-card {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 8px;
+  background: white;
+}
+
+.meta {
+  display: flex;
+  gap: 1rem;
+  color: #666;
+  font-size: 0.9rem;
+  margin: 1rem 0;
+}
+
+.type-badge {
+  background: #eee;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+} 

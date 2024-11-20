@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './ArticleFeed.css';
 
 function ArticleFeed() {
   const [articles, setArticles] = useState([]);
@@ -6,12 +7,17 @@ function ArticleFeed() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}/api/articles`)
+    const API_URL = process.env.NODE_ENV === 'development' 
+      ? 'http://localhost:3001' 
+      : process.env.REACT_APP_API_URL;
+
+    fetch(`${API_URL}/api/articles`)
       .then(response => {
         if (!response.ok) throw new Error('Failed to fetch articles');
         return response.json();
       })
       .then(data => {
+        console.log('Articles data:', data);
         setArticles(data);
         setLoading(false);
       })
@@ -30,7 +36,7 @@ function ArticleFeed() {
       {articles.map((article, index) => (
         <article key={index} className="article-card">
           <h2>{article.title}</h2>
-          <p>{article.analysis.summary}</p>
+          {article.summary && <p>{article.summary}</p>}
           <div className="meta">
             <span>{new Date(article.pubDate).toLocaleDateString()}</span>
             <span>{article.source}</span>

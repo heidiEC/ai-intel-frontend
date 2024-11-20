@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './SlackFeed.css';
 
 function SlackFeed() {
   const [messages, setMessages] = useState([]);
@@ -16,7 +17,7 @@ function SlackFeed() {
         return response.json();
       })
       .then(data => {
-        console.log('Slack data:', data);  // Debug log
+        console.log('Slack data:', data);
         setMessages(data);
         setLoading(false);
       })
@@ -34,13 +35,20 @@ function SlackFeed() {
     <div className="articles-grid">
       {messages.map((message, index) => (
         <article key={index} className="article-card">
-          <p>{message.text}</p>
+          <h2>{message.title}</h2>
+          {message.summary && <p>{message.summary}</p>}
           <div className="meta">
             <span>{new Date(message.timestamp).toLocaleDateString()}</span>
+            {message.type && <span className="type-badge">{message.type}</span>}
           </div>
-          <a href={message.link} target="_blank" rel="noopener noreferrer">
-            View in Slack →
-          </a>
+          <div className="links">
+            <a href={message.url} target="_blank" rel="noopener noreferrer">
+              View Source →
+            </a>
+            <a href={message.slackLink} target="_blank" rel="noopener noreferrer">
+              View in Slack →
+            </a>
+          </div>
         </article>
       ))}
     </div>
