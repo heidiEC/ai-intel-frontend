@@ -1,0 +1,50 @@
+.articles-grid {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.article-card {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.article-card h2 {
+  margin: 0 0 1rem 0;
+  color: #333;
+}
+
+.meta {
+  display: flex;
+  gap: 1rem;
+  color: #666;
+  font-size: 0.9rem;
+  margin: 1rem 0;
+}
+
+.type-badge {
+  background: #e9ecef;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.links a {
+  color: #0066cc;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.links a:hover {
+  text-decoration: underline;
+} 

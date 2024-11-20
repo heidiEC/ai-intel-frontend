@@ -1,0 +1,102 @@
+.App {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.App-header {
+  padding: 20px 0;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.App-header h1 {
+  margin: 0 0 20px 0;
+  color: #333;
+  font-size: 24px;
+}
+
+.feed-toggle {
+  display: flex;
+  gap: 10px;
+}
+
+.feed-toggle button {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.feed-toggle button:hover {
+  background: #f5f5f5;
+}
+
+.feed-toggle button.active {
+  background: #0066cc;
+  color: white;
+  border-color: #0066cc;
+}
+
+.articles-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.article-card {
+  background: white;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  padding: 20px;
+  transition: transform 0.2s;
+}
+
+.article-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.article-card h2 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.article-card p {
+  margin: 0 0 15px 0;
+  color: #666;
+  line-height: 1.5;
+}
+
+.article-card .meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #888;
+  margin-top: 15px;
+}
+
+.article-card a {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.article-card a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .App {
+    padding: 15px;
+  }
+  
+  .articles-grid {
+    grid-template-columns: 1fr;
+  }
+}
