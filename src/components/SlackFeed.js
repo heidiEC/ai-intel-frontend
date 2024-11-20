@@ -8,7 +8,7 @@ function SlackFeed() {
   useEffect(() => {
     const API_URL = process.env.NODE_ENV === 'development' 
       ? 'http://localhost:3001' 
-      : 'https://ai-intel-backend-dpvm.onrender.com';
+      : process.env.REACT_APP_API_URL;
 
     fetch(`${API_URL}/api/slack`)
       .then(response => {
